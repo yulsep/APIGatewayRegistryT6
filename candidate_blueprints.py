@@ -1,0 +1,21 @@
+from flask import Blueprint, request
+import requests
+from utils import load_file_config, HEADERS
+
+candidate_blueprints = Blueprint("candidate_blueprints", __name__)
+data_config = load_file_config()
+url_base = data_config.get('url-backend-registry') + "/candidate"
+
+
+@candidate_blueprints.route("/candidate", methods=['GET'])
+def get_all_candidates() -> dict:
+    url = url_base + "/all"
+    response = requests.get(url, headers=HEADERS)
+    return response.json()
+
+
+@candidate_blueprints.route("/candidate/<string:id>", methods=['GET'])
+def get_candidate_by_id(id_: str) -> dict:
+    url = url_base + f"/{id_}"
+    response = requests.get(url, headers=HEADERS)
+    return response.json()
