@@ -6,7 +6,8 @@ headers = {"Content-Type": "application/json; charset=utf-8"}
 # create roles
 roles = [
     {"name": "Administrador", "descripción": "Administrador del sistema de la registraduria"},
-    {"name": "jurado", "descripción": "Jurado que ingresa los votos"}
+    {"name": "jurado", "descripción": "Jurado que ingresa los votos"},
+    {"name": "candidato", "descripción":"Quien participa para ser elegido"}
 ]
 
 url = f'{security_backend}/rol/insert'
