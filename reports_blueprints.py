@@ -7,40 +7,30 @@ data_config = load_file_config()
 url_base = data_config.get('url-backend-registry') + "/reports"
 
 
-@reports_blueprints.route("/reports", methods=['GET'])
-def get_all_reports() -> dict:
-    url = url_base + "/all"
+@reports_blueprints.route("/reports/votes_by_candidate", methods=['GET'])
+def get_votes_by_candidate() -> dict:
+    url = url_base + "/votes_by_candidate"
     response = requests.get(url, headers=HEADERS)
     return response.json()
 
 
-@reports_blueprints.route("/reports/<string:id>", methods=['GET'])
-def get_reports_by_id(id_: str) -> dict:
-    url = url_base + f"/{id_}"
+@reports_blueprints.route("/reports/candidates_by_tables", methods=['GET'])
+def get_candidates_by_tables() -> dict:
+    url = url_base + "/candidates_by_tables"
     response = requests.get(url, headers=HEADERS)
     return response.json()
 
 
-@reports_blueprints.route("/reports/insert", methods=['POST'])
-def insert_reports() -> dict:
-    reports = request.get_json()
-    url = url_base + "/insert"
-    response = requests.post(url, headers=HEADERS, json=reports)
+@reports_blueprints.route("/reports/votes_by_political_party", methods=['GET'])
+def get_votes_by_political_party() -> dict:
+    url = url_base + "/votes_by_political_party"
+    response = requests.get(url, headers=HEADERS)
     return response.json()
 
 
-@reports_blueprints.route("/reports/update/<string:id_>", methods=['PUT'])
-def update_reports(id_: str) -> dict:
-    reports = request.get_json()
-    url = url_base + "/update"
-    response = requests.patch(url, headers=HEADERS, json=reports)
-    return response.json()
-
-
-@reports_blueprints.route("/reports/delete/<string:id_>", methods=['DELETE'])
-def delete_reports(id_: str) -> dict:
-    reports = request.get_json()
-    url = url_base + "/delete"
-    response = requests.delete(url, headers=HEADERS, json=reports)
+@reports_blueprints.route("/reports/percentage_votes_parties", methods=['GET'])
+def get_percentage_votes_parties() -> dict:
+    url = url_base + "/percentage_votes_parties"
+    response = requests.get(url, headers=HEADERS)
     return response.json()
 
