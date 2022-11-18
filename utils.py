@@ -8,7 +8,7 @@ HEADERS = {"Content-Type": "application/json; charset=utf-8"}
 
 def load_file_config():
     """
-
+    Carga el archivo desde el archivo de configuración previamente adecuado
     :return:
     """
     with open("config.json", 'r') as file_:
