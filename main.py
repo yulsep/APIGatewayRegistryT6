@@ -9,15 +9,28 @@ import requests
 
 import utils
 from table_blueprints import table_blueprints
-from candidate_blueprints import candidate_blueprint
-# TODO importar todos los blueprints
+from candidate_blueprints import candidate_blueprints
+from political_party_blueprints import political_party_blueprints
+from vote_blueprints import vote_blueprints
+from reports_blueprints import reports_blueprints
+from permission_blueprints import permission_blueprints
+from user_blueprints import user_blueprints
+from rol_blueprints import rol_blueprints
+
 
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "misiontic"
 cors = CORS(app)
 jwt = JWTManager(app)
 app.register_blueprint(table_blueprints)
-# TODO Registrar todos los blueprints
+app.register_blueprint(candidate_blueprints)
+app.register_blueprint(political_party_blueprints)
+app.register_blueprint(vote_blueprints)
+app.register_blueprint(reports_blueprints)
+app.register_blueprint(permission_blueprints)
+app.register_blueprint(user_blueprints)
+app.register_blueprint(rol_blueprints)
+
 
 @app.before_request
 def before_request_callback():
