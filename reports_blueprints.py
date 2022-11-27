@@ -50,3 +50,5 @@ def get_percentage_votes_parties() -> dict:
     url = url_base + "/reports/percentage_votes_parties"
     response = requests.get(url, headers=HEADERS)
     return response.json()
+
+
